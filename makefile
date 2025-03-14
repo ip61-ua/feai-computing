@@ -11,4 +11,4 @@ all: $(PDF_FILES)
 	${TEX} ${TEX_ARGS} $<
 
 clean:
-	rm -rf ${TEX_OUT}
+	rm -rf ${TEX_OUT} *.pdf *.log *.aux *.gz
