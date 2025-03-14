@@ -1,0 +1,369 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{geometry}
+
+\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+\title{Arquitectura de los computadores}
+\author{ip61@alu.ua.es}
+\date{\today}
+
+
+\begin{document}
+	\maketitle
+	
+	\begin{multicols}{2}
+	\section{Introducción}
+		En la actualidad, es una disciplina dirigida al diseño de máquinas para ejecutar programas en base a la optimización entre coste, rendimiento y otras restricciones. Alguno de los ámbitos que comprende:
+		\begin{itemize}
+			\item Repertorio de instrucciones.
+			\item Organización e implementación de la estructura del sistema de memoria, bus datos...
+			\item Diseño lógico del \textit{hardware}.
+		\end{itemize}
+		
+		\subsection{Definición de arquitectura.}
+
+		El concepto arquitectura de un computador se define formalmente en 1964 por Amdahl en IBM como parte del repertorio de instrucciones visible por el programador.
+		\paragraph{}
+		Ortega en 2005 da una definición más extensa: "\textit{Conjunto de instrucciones, recursos y características del procesador que son visibles al software que se ejecuta en el mismo. Por tanto, la arquitectura determina el software que el procesador puede ejecutar ...}" 
+		\paragraph{}
+		Además, Ortega define la microarquitectura como "\textit{Conjunto de recursos y métodos utilizados para satisfacer las especificaciones que establece la arquitectura ... La microarquitectura define las especificaciones para la implementación lógica.}"
+		
+
+		\subsection{Niveles de abstracción.}
+		Unificando los niveles de Bell junto a Newell y la visión funcional de Levy y Tanenbaum, permitiendo definir la jerarquía de abstracción por distintos niveles:
+		 \newline
+		 \newline
+		\begin{tabular}{ll}
+			Nivel. & Categoría. \\
+			4, 5 y 6. & Arquitectura (\textit{Software}). \\
+			3. & Entre ambas agrupaciones. \\
+			0, 1 y 2. & Tecnología (\textit{Hardware}). \\
+		\end{tabular}
+		
+		\columnbreak
+		
+		\paragraph{Nivel 6. Niveles superiores de \textit{software}.}
+		Lenguajes de alto nivel. Compiladores. Interfaces de usuario... 
+		\paragraph{Nivel 5. Sistema operativo.}
+		Interfaz entre \textit{hardware} y \textit{software}. Administración de tareas.
+		\paragraph{Nivel 4. Sistema computador.}
+		Especificación, operación e interconexión entre componentes (buses, memorias, periféricos...).
+		
+		Programación en lenguaje máquina y ensamblador.
+		\paragraph{Nivel 3. Transferencia entre registros.}
+		Nivel destinado al estudio sobre la transferencia de información. Microprogramación. Procesadores, Interfaces de entrada y salida... 
+		
+		Es la división entre arquitectura y tecnología.
+		\paragraph{Nivel 2. Digital.}
+		A nivel combinacional: MUX, DEMUX, circuitos aritméticos... 
+		A nivel secuencial: registros, contadores, memoria...
+		\paragraph{Nivel 1. Electrónica.}
+		Cimentado en las leyes de electricidad. Se construyen puertas lógicas, biestables... mediante corrientes, tensiones y frecuencias.
+		\paragraph{Nivel 0. Componente.}
+		Fundamentado en las leyes físicas. Son semiconductores N/P, metales y otros materiales físicos.
+		
+		\subsection{Taxonomía de Flynn.}
+		
+		\paragraph{} 
+		S = Simple, M = multiple, I = instruction y D = Data.
+		\paragraph{SISD}
+		Una instrucción, un flujo de datos. Arquitectura Von Neumann. MIPS.
+		\paragraph{SIMD}
+		Una instrucción, muchos datos. Su uso está muy extendido en las GPUs y procesadores vectoriales. Tienen paralelismo.
+		\paragraph{MISD} 
+		No hay ejemplos reales.
+		\paragraph{MIMD} 
+		Muchas instrucciones operan sobre muchos datos. También presentan paralelismo.
+
+		\subsection{Paralelismo funcional.}
+		
+		Es un tipo de paralelismo (ejecución en paralelo sobre distintos datos) aplicado a rutinas, como instrucciones o funciones. Distinguiendo entre:
+		\paragraph{Instrucción (ILP).}
+		Ejecución paralela sobre una serie de instrucciones. Granularidad fina.
+		\paragraph{Bucle o hebra (\textit{Thread}).} 
+		En paralelo, se ejecuta distintas iteraciones de un bucle. Granularidad fina/media.
+		\paragraph{Procedimiento (Proceso).} 
+		Simultaneidad en la ejecución de procedimientos en un programa. Granularidad media.
+		\paragraph{Programa.} 
+		Hay concurrencia entre los distintos programas/aplicaciones. Tienen una granularidad gruesa.
+		
+		\subsection{Tipos de computadores.}
+		\paragraph{Dispositivos móviles personales.}
+		Buscan equilibrio entre coste y consumo energético: teléfonos móviles, ordenadores portátiles (\textit{laptops}), videoconsolas portables...
+		\paragraph{Ordenadores sobremesa.} 
+		Existe un equilibrio precio-rendimiento según las necesidades: ofimática, multimedia, videojuegos,  gráficos...
+		\paragraph{Servidores.} 
+		Este tipo de dispositivos se centran en equilibrar 3 aspectos: escalabilidad, disponibilidad, \textit{throughput} y rendimiento.
+		\paragraph{\textit{Clusters}/WSC (\textit{Warehouse Scale Computers}).} 
+		Al igual que apartado anterior, hace énfasis en la escalabilidad, disponibilidad, \textit{throughput} y rendimiento. Distribución conjunta de ordenadores LAN y servidores para ofrecer SaaS (\textit{Software as a Service}): búsquedas, vídeo compartido, videojuegos multijugador...
+		\paragraph{Embebidos.} 
+		Espectro muy amplio. Coche, microondas, cajeros y entre ejemplos.
+		
+		\subsection{Diseño de computadores.}
+		En primer lugar, es necesario establecer requerimientos funcionales. Especificar el área de aplicación, compatibilidad, sistema operativo y estándares a emplear.
+		
+		\subsubsection{Decisión de implementación.}
+		
+		\paragraph{Por \textit{software}.} 
+		Supone un bajo coste errores, además facilitar el diseño y la actualización de esta.
+		\paragraph{Por \textit{hardware}.} 
+		Ventaja en rendimiento.
+		
+		\subsubsection{Consideración de nuevas tendencias.}
+		Dado que arquitectura o tecnología puede permanecer en el mercado por mucho tiempo.
+		
+		\paragraph{Tendencias \textit{hardware}.} Nuevas tecnologías de almacenamiento secundario como M.2 o SSD, en cuanto a la memoria primaria como DRR5, aumento del número de transistores.
+		\paragraph{Ley de Moore.} Parámetros como las velocidades de cómputo se duplican cada 18 meses. En la actualidad, no se cumple.
+		\paragraph{Tendencias \textit{software}.} Programas requieren mayor memoria, nuevos lenguajes de programación.
+		
+		\subsection{Principios de diseño.}
+		
+		\subsubsection{Ley de Amdahl.} 
+		Busca favorecer el caso frecuente.
+		\begin{displaymath}
+			a_{rendimiento} = \frac {R_{mejorado}} {R_{original}} =  \frac {t_{original}} {t_{mejorado}} 
+		\end{displaymath}
+		
+		\subsubsection{Ley de rendimientos decrecientes.}
+		La aceleración decrece tanto como se vayan añadiendo mejoras.
+		
+		\subsubsection{Localidad de referencia.}
+		Los programas suelen emplear el 90\% de su tiempo de ejecución en el 10\% del código.
+		
+		\paragraph{Localidad temporal.} Los elementos accedidos recientemente probablemente volverán a ser solicitados en el futuro.
+		
+		\paragraph{Localidad espacial.} Los elementos cuyas direcciones cercanas tienden a ser referenciados juntos en el tiempo.
+		
+		\section{Rendimiento.}
+		\subsection{Evolución.}
+		Los computadores han evolucionado muy rápido durante los últimos 70 años. Algunas de las claves son:
+		
+		\begin{itemize}
+			\item \textbf{Avances en la tecnología.} Se reduce el tamaño los elementos en el chip (\textit{feature size}), clk...
+			\item \textbf{Innovaciones en el diseño.} Compiladores de alto nivel, estándar UNIX y amplio uso de la arquitectura RISC (\textit{Reduced Instruction Set Computer}).
+		\end{itemize}
+
+		\paragraph{Finales de 1970.} Aparece el microprocesador. Tasa alta de mejora anual: 25-36\%. Producción masiva. Eliminación de la necesidad para programar ensamblador. Sistemas operativos estandarizados como UNIX, lo que reduce costes y riesgos de una nueva arquitectura.
+		\paragraph{Mitad de los años 80.} Aparición de primeras máquinas RISC. Enfoque en la mejora de rendimiento por el uso de cachés y provecho del paralelismo a nivel de instrucción.
+		\paragraph{Hasta inicios de los 2000.} \% mejora es constante.
+		\paragraph{Inicios de los 2000.} El alcance de la máxima disipación de chips refrigerados por aire, y la falta de paralelismo a nivel de instrucción. Estos factores redujeron a la mitad el \% de mejora.
+		
+		\subsection{Concepto.}
+		El rendimiento de computador son un conjunto de métricas destinadas a parametrizar el desempeño de un ordenador en una serie determinada de tareas y necesidades.
+		
+		\paragraph{}
+		Puede que a un usuario le interese reducir el $t_{respuesta}$/$t_{ejecuci\acute{o}n}$ para ejecutar más programas en un menor tiempo. Mientras que para la administración de \textit{clusters} o servidores se centre en aumentar la relación $transaction$/$hora$.
+		
+		\paragraph{}
+		Dado que en la métrica de rendimiento influyen factores no determinísticos, se emplea distribuciones de probabilidad.
+		
+		\begin{displaymath}
+				Rendimiento = \frac 1 t
+		\end{displaymath}
+		
+		\paragraph{}
+		Decimos que \textit{X} es un \textit{n} \% más rápido que \textit{Y}. 
+		
+		\begin{displaymath}
+				t_{x} + \frac n {100} t_{x} = t_{y} 
+		\end{displaymath}		
+		\begin{displaymath}
+				A = \frac {t_{antiguo}} {t_{nuevo}} = \frac {t_{y}} {t_{x}} = 1 + \frac n {100}
+		\end{displaymath}
+		
+		\paragraph{}
+		Incremento anual del rendimiento ($R$) en base a un año ($n$) anterior ($n-1$).
+		 
+		\begin{displaymath}
+			R_{n} = \Delta_{anual} \cdot R_{n-1} = (\Delta_{anual})^n \cdot R_0
+		\end{displaymath}
+		
+		\begin{displaymath}
+			\Delta_{anual} = \sqrt[n]{\frac {R_n} {R_0}} = \sqrt[n]{\frac {t_0} {t_n}} 
+		\end{displaymath}
+		
+		\subsection{Aplicaciones de Amdahl.}
+		Define la ganancia de rendimiento o aceleración que puede obtenerse al mejorar alguna característica de un computador. Para ello, hemos de distinguir entre:
+		
+		\paragraph{No mejorable.}
+		Refiere a aquella parte en la mejora no puede ser aplicada.
+		
+		\paragraph{Mejorable.}
+		Parte en la que una mejora puede ser aplicada.
+		
+		\paragraph{Mejorado.}
+		Parte en la que una mejora es aplicada.
+		
+		\paragraph{Fracción mejorada.}
+		Es la fracción de tiempo sobre la opción sin mejora que puede utilizarse para optimizar. 
+		
+		\subparagraph{Ejemplo:}
+		Un programa dura 10 segundos de los cuales 4 realiza trabajo en coma flotante. Este último puede mejorarse. Entonces: \newline $F_{mejorada} = \frac {4} {10}$.
+		
+		\paragraph{Aceleración mejorada.}
+		Aceleración solo en la parte que está mejorada o que sea mejorable. No debe confundirse con la aceleración global.
+		
+		\paragraph{Aceleración global.}
+		Es el cálculo de aceleración aplicado al cómputo de ambas partes que no puede aplicarse.
+		
+		\subparagraph{SIguiendo con el ejemplo anterior:}
+		La mejora a implementar supone un cambio significante. Pasando de tardar 4 segundos a 1 solo segundo. Entonces: \newline $A_{mejorada\ original} = \frac {4} {4} = 1$ \newline $A_{mejorada\ con\ mejora} = \frac {t_{antiguo}} {t_{nuevo}} = \frac {4} {1} = 4$.
+		
+		\paragraph{El tiempo de ejecución nuevo.}
+		Se define como:
+		\begin{displaymath}
+			t_{nuevo} = t_{antiguo} \cdot ( 1 - F_{mejorada} + \frac {F_{mejorada}} {A_{mejorada}})
+		\end{displaymath}
+		
+		$F_{mejorada} = 1 \implies A_{global} = A_{mejorada}$
+		
+		$F_{mejorada} = 0 \implies A_{global} = 1$
+		
+		\subsection{Relación de coste.}
+		El coste es un parámetro a tener en cuenta. Está influenciado por estos factores:
+		\paragraph{Curva de aprendizaje.}
+		Conforme avanza el tiempo: 
+		\begin{itemize}
+			\item Los costes de manufacturación se van reduciendo pese a no haber mejora.
+			\item Aumenta el número de dispositivos que superan las pruebas.
+		\end{itemize}
+		\paragraph{Volumen.}
+		Al incrementar el volumen de producción:
+		\begin{itemize}
+			\item Menos tiempo es necesario para mejorar los procesos (o bajar la curva de aprendizaje).
+			\item Eficiencia en la manufactura y compra.
+			\item El coste de diseño se amortiza entre más productos.
+		\end{itemize}
+		\paragraph{Mercado altamente competitivo.}
+		Existe una gran variedad de compañías que cuentan con diverso catálogo. Junto al volumen, se reduce la diferencia entre el precio de venta y el coste.
+		
+		\subsection{Coste de un circuito integrado (IC).}
+		El coste de silicio depende del número de puertas, conexiones y la regularidad del diseño (más es mejor, ocupará menos área).
+		\paragraph{}
+		Están definidos por el \textit{feature size}. Esto se refiere al tamaño que pueden tener los componentes dentro de un circuito integrado.
+		\paragraph{}
+		El complejo proceso de fabricación del silicio no ha variado considerablemente: la oblea es probada y cortada en dados que son empaquetados. Los defectos se desechan.
+	
+		\begin{displaymath}
+			C_{IC}=\frac {C_{dado} + C_{test\ dado} + C_{empaquetar+test\ final}} {N_{final\ yield}}
+		\end{displaymath}
+		\begin{displaymath}
+			C_{dado}=\frac {C_{oblea}} {N_{dados/oblea} \cdot R_{die\ yield}}
+		\end{displaymath}
+		\begin{displaymath}
+			N_{dados/oblea} = \frac {\pi ({d_{oblea}} / 2)^2} {A_{oblea}} - \frac {\pi {d_{oblea}}} {\sqrt {2 A_{dado}}}
+		\end{displaymath}
+		\begin{displaymath}
+			R_{die\ yield} = R_{wafer\ yield} \cdot \frac 1 {1+ (N_{defectos\ \acute{a}rea} \cdot A_{dado})^M}
+		\end{displaymath}
+		
+		En donde,
+		
+		\begin{tabular}{ll}
+			$C$: & Coste. \\
+			$N$: & Número. Cantidad. Cardinalidad. \\
+			$R$: & Rendimiento. Expresado en fracción.\\
+			$d$: & Diámetro. \\
+			$A$: & Área. Superficie. \\
+			$M$: & Complejidad del proceso de fabricación. \\
+			yield: & Sin defectos. \\
+			oblea: & Wafer. Lámina de silicio. \\
+			dado: & Die. Tiene impreso el circuito. \\
+		\end{tabular}
+		
+		\subsection{Métricas.}
+		
+		\paragraph{Tiempo de reloj. Tiempo de respuesta.}
+		Tiempo transcurrido para completar una tarea incluyendo todo.
+		
+		\paragraph{Ciclos por instrucción (CPI).}
+		Número medio de ciclos reloj por instrucción.
+		
+		\begin{displaymath}
+			CPI = \frac {N_{ciclos}} {RI}
+		\end{displaymath}
+		
+		En donde $RI$ es recuento de instrucción.
+		
+		\paragraph{Tiempo de CPU.}
+		Tiempo en que la CPU realiza tareas sin incluir tiempos de espera para
+		E/S u otros programas.
+		
+		\begin{displaymath}
+			t_{CPU} = N_{ciclos} \cdot t_{reloj/ciclo} = \frac {N_{ciclos}} {f_{reloj}}
+		\end{displaymath}
+		\begin{displaymath}
+			t_{CPU} =  N_{ciclos} \cdot clk = RI \cdot CPI \cdot clk
+		\end{displaymath}
+		
+		Para $clk$ es la duración de reloj y $RI$ es el recuento de instrucciones.
+		
+		\paragraph{Tiempo de CPU y CPI en detalle.}
+		Se puede detallar el CPI por cada $i$ tipo de instrucción.
+		
+		\begin{displaymath}
+			N_{ciclos} = \sum_{i=1}^{n} {CPI_i \cdot RI_i}
+		\end{displaymath}
+		
+		Lo que permite expresar:
+		
+		\begin{displaymath}
+			t_{CPU} = clk \cdot \sum_{i=1}^{n} {CPI_i \cdot RI_i}
+		\end{displaymath}
+		\begin{displaymath}
+			CPI = \frac {\sum_{i=1}^{n} {CPI_i \cdot RI_i}} {RI}
+		\end{displaymath}
+		
+		\paragraph{Millones de instrucciones por segundo (MIPS).}
+		Más fiable, puesto que involucra el tiempo en ejecución de programas reales. Esta métrica no debería usarse para comparativas con distintos repertorios de instrucciones porque los $MIPS$ pueden variar inversamente al rendimiento.
+		\begin{displaymath}
+			MIPS = \frac {RI} {t_{ejecuci\acute{o}n} \cdot 10^6} = \frac {f_{reloj}} {CPI \cdot 10^6}
+		\end{displaymath}
+		
+		\paragraph{MIPS de referencia.}
+		Usado para comparar usando otra máquina como referencia. Pues se apoya en el tiempo en ejecución de un determinado programa.
+		
+		\begin{displaymath}
+			MIPS_{relativos} = \frac {t_{referencia}} {t_{no\ estimado}} MIPS_{referencia}
+		\end{displaymath}
+		
+		Sea ${t_{referencia}}$ el tiempo transcurrido de un programa en la máquina de referencia, y
+		${t_{no\ estimado}}$ = tiempo de la aplicación en el dispositivo que se va a medir.
+		
+		\paragraph{Operaciones de punto flotante por segundo (FLOPS).}
+		Dependen del repertorio de instrucciones. La comparativa puede ser inconsistente.
+		
+		\begin{displaymath}
+			MFLOPS = \frac {N_{operaciones\ flotante}} {t_{ejeci\acute{o}n} \cdot 10^6}
+		\end{displaymath}
+		
+		\paragraph{FLOPS Normalizados.}
+		Livermore Loops propone solucionar el problema de los FLOPS añadiendo "\textit{pesos}" a diferentes operaciones.
+		
+		\subsection{\textit{Benchmarks}.}
+		Serie de pruebas para determinar el $t_{ejecuci\acute{o}n}$ (u otro tipo de puntuación) sobre la carga de trabajo del usuario (\textit{workload}).
+		
+		\paragraph{Aplicaciones reales.}
+		Se hacen pruebas usando: compiladores (g++, gcc, clang...), procesamiento de texto (TeX, Jupyter Notebook...) y herramientas CAD (blender, Spice...).
+		
+		\paragraph{Núcleos.}
+		Son pequeños fragmentos clave de programas. Livermore Loops y Linpack.
+		
+		\paragraph{\textit{Benchmarks} reducidos (\textit{Toys}).}
+		Pruebas específicas reducidas portables, de fácil simulación y estandarizadas: multiplicación de matrices, \textit{quicksort}, obtención de números primos...
+		
+		\paragraph{\textit{Benchmarks} sintéticos).}
+		Intención de simular la frecuencia media de operaciones y operandos de un gran conjunto de programas. Whetstone y Dhrystone.
+		
+		\paragraph{Colecciones de \textit{benchmarks}.}
+		 Conjunto de pruebas que desafían al dispositivo bajo una gran variedad de escenarios. Formadas por núcleos y programas reales. 
+		 \paragraph{}
+		 Son pruebas reproducibles debido al detalle para la ejecución de estas (parámetros de compilación, números y tipos de disco, sistema operativo...)
+		 \paragraph{}
+		 Algunas de las colecciones más importantes son SPEC, Business Winstone, Winbench. 
+		
+	\end{multicols}
+	
+\end{document}
