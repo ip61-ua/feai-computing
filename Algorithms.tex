@@ -93,4 +93,63 @@
 	\[
 		f + g \in O(n \log(n) + n^2) \qquad f + g \in O(n^2)
 	\]
+	
+	\paragraph{Ejercicio 1.2.} ¿Verdadero o falso?
+	{\LARGE
+	\begin{displaymath}
+		4n^3-2n^2+8 \in O(n^3)
+	\end{displaymath}
+	}
+	\begin{displaymath}
+		f_1 \in O(g_1) \land f_2 \in O(g_2) \implies f_1 + f_2 \in O(\max \{g_1, g_2\}) \qquad 4n^3-2n^2+8 \in O(\max \{4n^3, -2n^2, 8\})
+	\end{displaymath}
+	\begin{displaymath}
+		4n^3-2n^2+8 \in O(\max \{n^3, n^2, 1\}) \qquad O(1) \subset O(n^2) \subset O(n^3) \qquad 4n^3-2n^2+8 \in O(n^3) \qquad \text{Verdadero.}
+	\end{displaymath}
+	{\LARGE
+	\begin{displaymath}
+		n^3 \in O(4n^3-2n^2+8)
+	\end{displaymath}
+	}
+	\[
+		f \in O(g) \land g \in O(h) \implies f \in O(h) \qquad 4n^3-2n^2+8 \in O(n^3) \qquad n^3 \in O(n^3) \qquad \text{Verdadero.}
+	\]
+	{\LARGE
+	\begin{displaymath}
+		n + n\sqrt{n} \in O(n)
+	\end{displaymath}
+	}
+	\[
+		f_1 \in O(g_1) \land f_2 \in O(g_2) \implies O(\max \{g_1,g_2\}) \qquad n + n\sqrt{n} \in O(\max \{n, n\sqrt{n}\}) \qquad O(n) \subset O(n\sqrt{n})
+	\]
+	\[
+		n + n\sqrt{n} \in O(n\sqrt{n}) \qquad n\sqrt{n} \notin O(n) \qquad \text{Falso.}
+	\]
+	{\LARGE
+	\begin{displaymath}
+		n + n\sqrt{n} \in \Theta(n)
+	\end{displaymath}
+	}
+	\[
+		\text{Por el mismo motivo, es falso.}
+	\]
+	{\LARGE
+	\begin{displaymath}
+		f\notin O(g) \land \exists \lim\limits_{n \to +\infty}{\frac{f}{g}} \implies f \in \Omega (g)
+	\end{displaymath}
+	}
+	\[
+		\lim\limits_{n \to \infty}{\frac f g} = 0 \iff f\in O(g) \land g \notin O(f) \quad 
+		\lim\limits_{n \to \infty}{\frac f g} = +\infty \iff f\notin O(g) \land g \in O(f) \quad 
+		\lim\limits_{n \to \infty}{\frac f g} = \Re^+ \iff f\in O(g) \land g \in O(f)
+	\]
+	\[
+		\lim\limits_{n \to \infty}{\frac f g} = 0 \iff f\notin \Omega(g) \land g \in \Omega(f) \quad 
+		\lim\limits_{n \to \infty}{\frac f g} = +\infty \iff f\in \Omega(g) \land g \notin \Omega(f) \quad 
+		\lim\limits_{n \to \infty}{\frac f g} = \Re^+ \iff f\in \Omega(g) \land g \in \Omega(f)
+	\]
+	\[
+		f\notin O(g) \implies \lim\limits_{n \to +\infty}{\frac{f}{g}}=+\infty \implies f\in \Omega(g) \land g \notin \Omega(f) \qquad \text{Verdadero.}
+	\]
+
 \end{document}
