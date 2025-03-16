@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\title{Exámenes de ADA}
+
+\begin{document}
+	\section{Propiedades de O (cota superior, peor caso)}
+	{\LARGE
+	\begin{equation}
+		f \in O(f)
+	\end{equation}
+	\begin{equation}
+		f \in O(g) \implies O(f) \subseteq O(g)
+	\end{equation}
+	\begin{equation}
+		O(f) = O(g) \iff f \in O(g) \land g \in O(f)
+	\end{equation}
+	\begin{equation}
+		f \in O(g) \land g \in O(h) \implies f \in O(h) 
+	\end{equation}
+	\begin{equation}
+		f \in O(g) \land g \in O(h) \implies f \in O(\min \{g, h\})
+	\end{equation}
+	\begin{equation}
+		f_1 \in O(g_1) \land f_2 \in O(g_2) \implies f_1 + f_2 \in O(g_1 + g_2) 
+	\end{equation}
+	\begin{equation}
+		f_1 \in O(g_1) \land f_2 \in O(g_2) \implies f_1 + f_2 \in O(\max \{g_1, g_2\})
+	\end{equation}
+	\begin{equation}
+		f_1 \in O(g_1) \land f_2 \in O(g_2) \implies f_1 f_2 \in O(g_1 g_2)
+	\end{equation}	
+	\begin{equation}
+		f(n) = a_m n^m + ... + a_1 n + a_0 \text{ tal que } a_m > 0 \implies f \in O(n^m)
+	\end{equation}	
+	\begin{equation}
+		O(f) \subset O(g) \implies f \in O(g) \land g \notin O(f)
+	\end{equation}	
+	}
+	
+	\paragraph{Ejercicio 1.1.} Resuelve.
+	{\LARGE
+	\begin{displaymath}
+		f(n)=log (n) + log_2 (n^3) + log_3 (n^2) + n log(n) \in O(?)
+	\end{displaymath}
+	}
+	
+	Aplicamos
+	\begin{displaymath}
+		f_1 \in O(g_1) \land f_2 \in O(g_2) \implies f_1 + f_2 \in O(\max \{g_1, g_2\})
+	\end{displaymath}
+	\begin{displaymath}
+		f(n) \in O(\max \{log(n), log_2(n^3), log_3(n^2), nlog(n)\})
+	\end{displaymath}
+	\begin{displaymath}
+		O(\max \{log(n), log_2(n^3), log_3(n^2), nlog(n)\}) = O(\max \{log(n), n log(n)\}) = O(n log(n))
+	\end{displaymath}
+	
+	Por lo tanto, \[ f(n) \in O(nlog(n))\]
+	{\LARGE
+	\begin{displaymath}
+		g(n) = 2^{log_2 (n^2)} + 4^{log_2 (n)} + 2^{log_2 (n)} \in O(?)
+	\end{displaymath}
+	}
+	
+	Procedemos con
+	\[
+		f_1 \in O(g_1) \land f_2 \in O(g_2) \implies f_1 + f_2 \in O(\max \{g_1, g_2\})
+	\]
+	\[
+		g(n) \in O(\max \{2^{log_2 (n^2)}, 4^{log_2 (n)}, 2^{log_2 (n)}\})
+	\]
+	
+	Podemos simplificar recurriendo a $a^{log_a (x)} = x$. Obteniendo: $2^{log_2 (n)} = n$.
+	
+	Podemos simplificar recurriendo a $log_a (b^c) = c \cdot log_a (b)$. Obteniendo: $2^{log_2 (n^2)} = 2^{2log_2(n^2)} = 4^{log_2 (n)}$.
+	
+	Quedando así: $g \in O(\max \{ 4^{log_2 (n)}, n\})$
+	
+	Por lo tanto,
+	\[
+		g \in O(4^{log_2 (n)})
+	\]
+	{\LARGE
+	\begin{displaymath}
+		f (n) + g(n) \in O(?)
+	\end{displaymath}
+	}
+
+	Aplicación directa
+	\[
+		f + g \in O(n log(n) + 4^{log_2 (n)}) \qquad f + g \in O(4^{log_2 (n)})
+	\]
+\end{document}
