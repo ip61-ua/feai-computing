@@ -43,7 +43,7 @@
 	\paragraph{Ejercicio 1.1.} Resuelve.
 	{\LARGE
 	\begin{displaymath}
-		f(n)=log (n) + log_2 (n^3) + log_3 (n^2) + n log(n) \in O(?)
+		f(n)=\log (n) + \log_2 (n^3) + \log_3 (n^2) + n \log(n) \in O(?)
 	\end{displaymath}
 	}
 	
@@ -52,16 +52,16 @@
 		f_1 \in O(g_1) \land f_2 \in O(g_2) \implies f_1 + f_2 \in O(\max \{g_1, g_2\})
 	\end{displaymath}
 	\begin{displaymath}
-		f(n) \in O(\max \{log(n), log_2(n^3), log_3(n^2), nlog(n)\})
+		f(n) \in O(\max \{\log(n), \log_2(n^3), \log_3(n^2), n\log(n)\})
 	\end{displaymath}
 	\begin{displaymath}
-		O(\max \{log(n), log_2(n^3), log_3(n^2), nlog(n)\}) = O(\max \{log(n), n log(n)\}) = O(n log(n))
+		O(\max \{\log(n), \log_2(n^3), \log_3(n^2), n\log(n)\}) = O(\max \{\log(n), n \log(n)\}) = O(n \log(n))
 	\end{displaymath}
 	
 	Por lo tanto, \[ f(n) \in O(nlog(n))\]
 	{\LARGE
 	\begin{displaymath}
-		g(n) = 2^{log_2 (n^2)} + 4^{log_2 (n)} + 2^{log_2 (n)} \in O(?)
+		g(n) = 2^{\log_2 (n^2)} + 4^{\log_2 (n)} + 2^{\log_2 (n)} \in O(?)
 	\end{displaymath}
 	}
 	
@@ -70,18 +70,18 @@
 		f_1 \in O(g_1) \land f_2 \in O(g_2) \implies f_1 + f_2 \in O(\max \{g_1, g_2\})
 	\]
 	\[
-		g(n) \in O(\max \{2^{log_2 (n^2)}, 4^{log_2 (n)}, 2^{log_2 (n)}\})
+		g(n) \in O(\max \{2^{\log_2 (n^2)}, 4^{\log_2 (n)}, 2^{\log_2 (n)}\})
 	\]
 	
-	Podemos simplificar recurriendo a $a^{log_a (x)} = x$. Obteniendo: $2^{log_2 (n)} = n$.
+	Podemos simplificar recurriendo a $a^{\log_a (x)} = x$. Obteniendo: $2^{\log_2 (n^2)} = n^2$. Así como $2^{\log_2(n)} = n$
 	
-	Podemos simplificar recurriendo a $log_a (b^c) = c \cdot log_a (b)$. Obteniendo: $2^{log_2 (n^2)} = 2^{2log_2(n^2)} = 4^{log_2 (n)}$.
+	Simplificando $4^{\log_2 (n)} = 2^{2\log_2 (n)} = n^2$
 	
-	Quedando así: $g \in O(\max \{ 4^{log_2 (n)}, n\})$
+	Quedando así: $g \in O(\max \{ n^2, n \})$
 	
 	Por lo tanto,
 	\[
-		g \in O(4^{log_2 (n)})
+		g \in O(n^2)
 	\]
 	{\LARGE
 	\begin{displaymath}
@@ -91,6 +91,6 @@
 
 	Aplicación directa
 	\[
-		f + g \in O(n log(n) + 4^{log_2 (n)}) \qquad f + g \in O(4^{log_2 (n)})
+		f + g \in O(n \log(n) + n^2) \qquad f + g \in O(n^2)
 	\]
 \end{document}
