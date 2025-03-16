@@ -151,5 +151,63 @@
 	\[
 		f\notin O(g) \implies \lim\limits_{n \to +\infty}{\frac{f}{g}}=+\infty \implies f\in \Omega(g) \land g \notin \Omega(f) \qquad \text{Verdadero.}
 	\]
-
+	{\LARGE
+	\begin{displaymath}
+		f \in \Theta(g_1) \land f \in \Theta(g_2) \implies f \in O(g_1 + g_2)
+	\end{displaymath}
+	}
+	\[
+		f \in \Theta(g_1) \land f \in \Theta(g_2) \implies f \in \Theta (\max \{g_1, g_2\}) = \Theta(g_1 + g_2) \qquad
+		f \in \Theta(g) \implies f \in O(g) \qquad
+		f \in O(g_1 + g_2) \qquad
+		\text{Verdadero.}
+	\]
+	{\LARGE
+	\begin{displaymath}
+		f \in \Theta(g_1) \land f \in \Theta(g_2) \implies f \in \Omega(g_1 + g_2)
+	\end{displaymath}
+	}
+	\[
+		f \in \Theta(g_1) \land f \in \Theta(g_2) \implies f \in \Theta(\max \{g_1, g_2\}) \qquad
+		\Theta(\max\{g_1, g_2\}) = \Theta(g_1 + g_2) \qquad 
+		\Theta(g_1 + g_2) \ge \Omega(g_1 + g_2) \qquad
+		\text{Verdadero.}
+	\]
+	{\LARGE
+	\begin{displaymath}
+		f \in \Theta(g_1) \land f \in \Theta(g_2) \implies f \in O(g_1 \cdot g_2)
+	\end{displaymath}
+	}
+	\[
+		f \in \Theta(g_1) \land f \in \Theta(g_2) \implies f \in \Theta(\max\{g_1, g_2\}) \qquad 
+		\Theta(\max\{g_1, g_2\}) = \Theta(g_1 + g_2) \qquad
+		f \in \Theta(g_1 + g_2)
+	\]
+	\[
+		O(g_1 g_2) > \Theta(g_1 + g_2) \qquad \text{Verdadero.}
+	\]
+	{\LARGE
+		\begin{displaymath}
+			f \in \Theta(g_1) \land f \in \Theta(g_2) \implies f \in \Omega(g_1 \cdot g_2)
+		\end{displaymath}
+	}
+	\[
+		\text {Del anterior,} \qquad \Omega(g_1 g_2) \not< \Theta(g_1 + g_2) \qquad \text{Falso.}
+	\]
+	{\LARGE
+	\begin{displaymath}
+		O(g_1 + g_2) = O(\max\{g_1, g_2\})
+	\end{displaymath}
+	}
+	\[
+		\text{Evidente. Verdadero.}
+	\]
+	{\LARGE
+	\begin{displaymath}
+		O(g_1 + g_2) = O(\min\{g_1, g_2\})
+	\end{displaymath}
+	}
+	\[
+		\text{Evidente. Falso.}
+	\]
 \end{document}
